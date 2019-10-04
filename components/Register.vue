@@ -82,7 +82,7 @@
 
             <div class="field is-grouped">
               <div class="control">
-                <button class="button is-link" :disabled="validate()">Login</button>
+                <button class="button is-link" :disabled="validate()">Register</button>
               </div>
             </div>
           </form>
