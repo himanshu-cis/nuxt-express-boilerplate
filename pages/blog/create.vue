@@ -24,7 +24,8 @@
           <div class="field">
             <label class="label">Content</label>
             <div class="control">
-              <textarea v-model="content" class="textarea" placeholder="Textarea" />
+              <vue-editor v-model="content"></vue-editor>
+              <!-- <textarea v-model="content" class="textarea" placeholder="Textarea" /> -->
             </div>
           </div>
 
@@ -53,8 +54,12 @@
   </div>
 </template>
 <script>
+import { VueEditor } from "vue2-editor";
 
 export default {
+  components:{
+    VueEditor
+  },
   data () {
     return {
       title: null,

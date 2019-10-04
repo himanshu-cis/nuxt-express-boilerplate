@@ -15,13 +15,13 @@
               Added&nbsp;<strong v-if="blog.createdBy">by {{ blog.createdBy.firstName }} {{ blog.createdBy.lastName }}</strong>&nbsp;on {{ blog.createdAt }}
             </span>
             <span class="level-right" v-if="blog.tags.length">
-              <strong>Tagged under:</strong>
+              <strong>Tagged under:&nbsp;</strong>
               {{ blog.tags.join(', ') }}
             </span>
           </small>
         </div>
         <hr />
-        <p class="is-size-5">{{ blog.content }}</p>
+        <p class="is-size-5" v-html="blog.content"></p>
       </div>
     </div>
   </div>
