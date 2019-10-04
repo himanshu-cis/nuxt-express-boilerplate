@@ -1,6 +1,6 @@
-# blog
+# Vue-nuxt-express boilerplate
 
-> My striking Nuxt.js project
+> Simple boilerplate with user authentication.
 
 ## Build Setup
 
@@ -18,5 +18,3 @@ $ yarn start
 # generate static project
 $ yarn generate
 ```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
