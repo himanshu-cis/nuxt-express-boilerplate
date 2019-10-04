@@ -4,10 +4,19 @@ export const state = () => ({
 })
 
 export const mutations = {
-  toggleLogin (state) {
+  toggleLogin(state) {
     state.loginModal = !state.loginModal
   },
-  toggleRegister (state) {
+  toggleRegister(state) {
     state.registerModal = !state.registerModal
+  }
+}
+
+export const actions = {
+  toggleLogin({ commit }) {
+    commit('toggleLogin')
+  },
+  toggleRegister({ commit }) {
+    commit('toggleRegister')
   }
 }

@@ -27,7 +27,10 @@ const sendOne = curry((res, entity) => {
     throw new NotFoundError();
   }
 
-  return sendResponse(res, entity);
+  return sendResponse(res, {
+    status: true,
+    ...entity
+  });
 });
 
 
@@ -36,8 +39,8 @@ const sendList = curry((res, entityList) => sendResponse(res, entityList));
 const sendCreated = curry((res, entity) => sendResponse(res, entity));
 const sendUpdated = curry((res, updatedEntity) => sendResponse(res, updatedEntity));
 const sendDeleted = curry(res => sendResponse(res, null, STATUSES.NO_CONTENT));
-const sendNotFound = curry(res => sendResponse(res, { success: false, message: 'Not found' }, STATUSES.NOT_FOUND));
-const sendError = curry((res, entity) => sendResponse(res, entity, STATUSES.UNPROCESSABLE_ENTITY));
+const sendNotFound = curry(res => sendResponse(res, { status: false, message: 'Not found' }, STATUSES.NOT_FOUND));
+const sendError = curry((res, entity) => sendResponse(res, { status: false, message: entity }, STATUSES.UNPROCESSABLE_ENTITY));
 const sendAccepted = (res) => () => sendResponse(res, null);
 
 module.exports = {
@@ -48,5 +51,6 @@ module.exports = {
   sendDeleted,
   sendAccepted,
   sendNotFound,
-  sendError
+  sendError,
+  sendResponse
 };

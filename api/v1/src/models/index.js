@@ -1,9 +1,9 @@
-const { Product } = require('./product/product')
+const { Article } = require('./blog/article')
 const { User } = require('./user/user')
 
 
 module.exports = {
     'users': 'db_users',
-    'products': Product,
+    'article': Article,
     'users': User
 }

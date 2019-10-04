@@ -9,7 +9,7 @@
     </div>
     <div class="columns">
       <div class="column is-full">
-        <nuxt-link to="/blog/create" class="button is-link">
+        <nuxt-link v-if="$auth.loggedIn" to="/blog/create" class="button is-link">
           Add new
         </nuxt-link>
       </div>
@@ -17,7 +17,7 @@
     <div class="columns">
       <div class="column is-full">
         <div v-for="(blog, index) in blogs" :key="index" class="box">
-          <nuxt-link :to="{ name: 'blog-id', params: { id:blog.id }}" exact>
+          <nuxt-link :to="{ name: 'blog-id', params: { id:blog._id }}" exact>
             <article class="media">
               <div class="media-left">
                 <figure class="image is-64x64">
@@ -27,7 +27,7 @@
               <div class="media-content">
                 <div class="content">
                   <p>
-                    <strong>{{ blog.createdBy }}</strong>
+                    <strong>{{ blog.createdBy.firstName }} {{ blog.createdBy.lastName }}</strong>
                     <small>{{ blog.createdAt }}</small>
                     <br>
                     {{ blog.title }}
@@ -55,6 +55,9 @@ export default {
     ...mapMutations({
       toggle: 'blogs/toggle'
     })
+  },
+  created() {
+    this.$store.dispatch('blogs/get');
   }
 }
 </script>

@@ -3,25 +3,29 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.Types.ObjectId;
 
 const schema = new Schema({
-    productName: {
+    title: {
         type: String,
         required: [true],
     },
-    productDesc: {
+    content: {
         type: String,
+    },
+    tags: {
+        type: Array
     },
     createdAt: {
         type: Date,
-        // required: [true]
+        default: Date.now  
     },
     createdBy: {
         type: ObjectId,
+        ref: 'User'
     }
 });
 
 
-const Product = mongoose.model('Product', schema);
+const Article = mongoose.model('article', schema);
 
 module.exports = {
-    Product
+    Article
 }

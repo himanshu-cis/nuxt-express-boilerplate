@@ -56,7 +56,6 @@ const schema = new Schema({
 
 /* virtual keys */
 schema.virtual('fullName').get(() => {
-    console.log('------------', parameters);
     return this.firstName + ' ' + this.lastName
 })
 

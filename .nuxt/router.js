@@ -17,22 +17,22 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
-      path: "/blog/create",
-      component: _d56dfc1a,
-      name: "blog-create"
-    }, {
-      path: "/blog/:id?",
-      component: _0562c15a,
-      name: "blog-id"
-    }, {
-      path: "/",
-      component: _2ae88bbc,
-      name: "index"
-    }],
+    path: "/blog/create",
+    component: _d56dfc1a,
+    name: "blog-create"
+  }, {
+    path: "/blog/:id?",
+    component: _0562c15a,
+    name: "blog-id"
+  }, {
+    path: "/",
+    component: _2ae88bbc,
+    name: "index"
+  }],
 
   fallback: false
 }
 
-export function createRouter() {
+export function createRouter () {
   return new Router(routerOptions)
 }

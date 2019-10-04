@@ -10,20 +10,44 @@ export const state = () => ({
 })
 
 export const mutations = {
-  add (state, { title, content, tags, createdBy, id }) {
-    state.list.push({
-      id: Number(state.list.length) + 1,
-      title,
-      content,
-      createdAt: new Date(),
-      createdBy,
-      tags
-    })
+  get(state, data) {
+    if(Array.isArray(data)) {
+      state.list = [
+        ...data
+      ];
+    } else {
+      state.list.push(data)
+    }
+  },
+  add (state, data) {
+    state.list.push(data)
   },
   remove (state, { blog }) {
     state.list.splice(state.list.indexOf(blog), 1)
   },
   toggle (state, blog) {
     blog.done = !blog.done
+  }
+}
+
+export const actions = {
+  get({commit}, data) {
+    return this.$axios.$get('/api/blog', {
+      params: data
+    })
+      .then(response => {
+        if(response.status) {
+          commit('get', response.payload)
+        }
+      })
+  },
+  add({commit}, data) {
+    return this.$axios.$post('/api/blog/', data)
+      .then(response => {
+        if(response.status) {
+          console.log("TCL: add -> response.payload", response.payload)
+          commit('add', response.payload);
+        }
+      });
   }
 }

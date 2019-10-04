@@ -50,12 +50,14 @@ module.exports = {
     strategies: {
       local: {
         endpoints: {
-          login: { url: 'api/auth/login', method: 'post', propertyName: 'data.token' },
-          user: { url: 'me', method: 'get', propertyName: 'data' },
-          logout: false
+          login: { url: '/api/auth/login', method: 'post', propertyName: 'token' }
         }
       }
     }
   },
-  serverMiddleware: ['~/api/v1/app.js']
+  serverMiddleware: ['~/api/v1/app.js'],
+  "plugins": [
+    { src: '~/plugins/notifications', mode: 'client' },
+    { src: '~/plugins/axios' }
+  ]
 }

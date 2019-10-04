@@ -67,15 +67,14 @@ export default {
       const blog = {
         title: this.title,
         content: this.content,
-        tags: this.tags.split(',').map(val => val.replace(/\s/g, '')),
-        createdBy: 'Himanshu S'
+        tags: this.tags,
       }
 
       this.title = null
       this.content = null
       this.tags = null
 
-      this.$store.commit('blogs/add', blog)
+      this.$store.dispatch('blogs/add', blog)
       this.$router.push('/')
     }
   }

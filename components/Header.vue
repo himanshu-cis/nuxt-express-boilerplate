@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <nav class="navbar  is-fixed-top is-link" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="/">Posts</a>
 
@@ -26,13 +26,20 @@
         </nuxt-link>
       </div>
 
-      <div class="navbar-end">
+      <div class="navbar-end" v-if="!$auth.loggedIn">
         <div class="navbar-item">
           <div class="buttons">
             <a class="button is-primary" @click="showRegister">
               <strong>Sign up</strong>
             </a>
             <a class="button is-light" @click="showLogin">Log in</a>
+          </div>
+        </div>
+      </div>
+      <div class="navbar-end" v-if="$auth.loggedIn">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-light" @click="logout">Logout</a>
           </div>
         </div>
       </div>
@@ -56,6 +63,9 @@ export default {
     },
     showRegister () {
       this.$store.commit('misc/toggleRegister')
+    },
+    logout () {
+      this.$auth.logout();
     }
   }
 }
