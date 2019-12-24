@@ -1,6 +1,8 @@
+const path = require('path');
 
 module.exports = {
   mode: 'spa',
+  css: ['~/assets/css/tailwind.css'],
   /*
   ** Headers of the page
   */
@@ -31,18 +33,19 @@ module.exports = {
   */
   modules: [
     // Doc: https://github.com/nuxt-community/modules/tree/master/packages/bulma
-    '@nuxtjs/bulma',
+    // '@nuxtjs/bulma',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/auth'
   ],
   build: {
     postcss: {
-      preset: {
-        features: {
-          customProperties: false
-        }
-      }
+      tailwindcss: path.resolve(__dirname, './tailwind.js')
+      // preset: {
+      //   features: {
+      //     customProperties: false
+      //   }
+      // }
     },
     watch: ['api']
   },

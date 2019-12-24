@@ -1,16 +1,14 @@
 <template>
-  <div class="section" style="background: rgba(204, 204, 204, 0.28);">
-    <div class="columns is-centered">
+  <div class="flex content-center">
       <div
-        class="column is-half"
-        style="background:#fff; border: 1px solid #ccc;min-height: 100vh;padding:2em"
+        class="w-1/2 ml-auto mr-auto mt-10 bg-white p-10 border"
         v-if="blog"
       >
         <div class="hero">
           <hero class="body">
             <h3 class="subtitle">{{ blog.title }}</h3>
           </hero>
-          <small class="level">
+          <small class="level text-gray-500">
             <span class="level-left">
               Added&nbsp;<strong v-if="blog.createdBy">by {{ blog.createdBy.firstName }} {{ blog.createdBy.lastName }}</strong>&nbsp;on {{ blog.createdAt }}
             </span>
@@ -21,9 +19,8 @@
           </small>
         </div>
         <hr />
-        <p class="is-size-5" v-html="blog.content"></p>
+        <p class="is-size-5 mt-4 text-gray-800" v-html="blog.content"></p>
       </div>
-    </div>
   </div>
 </template>
 <script>
@@ -47,3 +44,8 @@ export default {
   }
 };
 </script>
+<style>
+  body{
+    background: rgba(204, 204, 204, 0.35);
+  }
+</style>

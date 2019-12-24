@@ -1,43 +1,37 @@
 <template>
-  <div class="section">
-    <div class="hero">
-      <div class="hero-body">
+  <div class="container">
+    <div class="flex mb-4">
+      <div class="w-full">
         <h1 class="title">
           Blogs
         </h1>
-      </div>
-    </div>
-    <div class="columns">
-      <div class="column is-full">
-        <nuxt-link v-if="$auth.loggedIn" to="/blog/create" class="button is-link">
+        <nuxt-link v-if="$auth.loggedIn" to="/blog/create" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
           Add new
         </nuxt-link>
-      </div>
+        </div>
     </div>
-    <div class="columns">
-      <div class="column is-full">
-        <div v-for="(blog, index) in blogs" :key="index" class="box">
-          <nuxt-link :to="{ name: 'blog-id', params: { id:blog._id }}" exact>
-            <article class="media">
-              <div class="media-left">
-                <figure class="image is-64x64">
-                  <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
-                </figure>
+    <div class="flex flex-wrap">
+        <div class="w-full" v-for="(blog, index) in blogs" :key="index">
+         <nuxt-link :to="{ name: 'blog-id', params: { id:blog._id }}" exact>
+         <div class="flex flex-warp text-left border-b border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-2">
+          <div class="w-100 text-center">
+            <img class="w-20 mr-4" src="https://bulma.io/images/placeholders/128x128.png" alt="Avatar of Jonathan Reinink">
+          </div>
+          <div class="flex flex-col justify-between leading-normal">
+      
+            <div class="mb-2">
+              <div class="text-gray-900 font-bold text-xl mb-2">{{ blog.title }}</div>
+              <div class="text-sm">
+                <p class="text-gray-900 leading-none">{{ blog.createdBy.firstName }} {{ blog.createdBy.lastName }}</p>
+                <p class="text-gray-600 text-xs">{{ blog.createdAt }}</p>
               </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <strong>{{ blog.createdBy.firstName }} {{ blog.createdBy.lastName }}</strong>
-                    <small>{{ blog.createdAt }}</small>
-                    <br>
-                    {{ blog.title }}
-                  </p>
-                </div>
-              </div>
-            </article>
+            </div>
+            <div class="flex items-center">
+            </div>
+          </div>
+          </div>
           </nuxt-link>
         </div>
-      </div>
     </div>
   </div>
 </template>

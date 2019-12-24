@@ -25,10 +25,11 @@
     "mongoose": "^5.7.5",
     "mongose": "0.0.2-security",
     "morgan": "^1.9.1",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.9.0",
     "parse-error": "^0.2.0",
     "passport": "^0.4.0",
     "rest-api-errors": "^1.2.1",
+    "tailwindcss": "^1.1.4",
     "vue-snotify": "^3.2.1",
     "vue2-editor": "^2.10.2"
   },

@@ -1,52 +1,49 @@
 <template>
-  <div class="section">
-    <div class="columns">
-      <div class="column is-full">
-        <div class="hero">
-          <div class="hero-body">
-            <h1 class="title">
-              Create a new blog
-            </h1>
-          </div>
-        </div>
+  <div class="container">
+    <div class="flex">
+      <div class="w-full">
+        <h1 class="title">
+          Create 
+        </h1>
       </div>
     </div>
-    <div class="columns">
-      <div class="column is-half">
+    <div class="flex text-left">
+      <div class="w-full bg-white p-5 ml-10 border">
         <form class="review-form" @submit.prevent="onSubmit">
           <div class="field">
-            <label class="label">Title</label>
+            <label class="block text-gray-700 text-sm font-bold mb-2 mt-4">Title</label>
             <div class="control">
-              <input v-model="title" class="input" type="text" placeholder="Enter blog title...">
+              <input v-model="title" 
+              class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" type="text" 
+              :class="{'border-red-500': error ==='title'}"
+              placeholder="Enter blog title...">
             </div>
+            <p class="text-red-500 text-xs italic" v-if="error ==='title'">Please enter a title</p>
+
           </div>
 
           <div class="field">
-            <label class="label">Content</label>
+            <label class="block text-gray-700 text-sm font-bold mb-2 mt-4">Content</label>
             <div class="control">
               <vue-editor v-model="content"></vue-editor>
-              <!-- <textarea v-model="content" class="textarea" placeholder="Textarea" /> -->
+              <p class="text-red-500 text-xs italic" v-if="error ==='content'">Please enter some content</p>
             </div>
           </div>
 
           <div class="field">
-            <label class="label">Tags</label>
+            <label class="block text-gray-700 text-sm font-bold mb-2 mt-4">Tags</label>
             <div class="control">
-              <input v-model="tags" class="input" type="text" placeholder="Enter blog tags (comma seperated)...">
+              <input v-model="tags" class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal" type="text" placeholder="Enter blog tags (comma seperated)...">
             </div>
           </div>
 
           <div class="field is-grouped">
-            <div class="control">
-              <button class="button is-link">
-                Add
+              <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 rounded focus:outline-none focus:shadow-outline">
+                Create
               </button>
-            </div>
-            <div class="control">
-              <button class="button is-text">
+              <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mt-4 rounded focus:outline-none focus:shadow-outline">
                 Cancel
               </button>
-            </div>
           </div>
         </form>
       </div>
@@ -64,7 +61,8 @@ export default {
     return {
       title: null,
       content: null,
-      tags: null
+      tags: null,
+      error: ''
     }
   },
   methods: {
@@ -73,6 +71,16 @@ export default {
         title: this.title,
         content: this.content,
         tags: this.tags,
+      }
+
+      if(!this.title || this.title === '') {
+        this.error = 'title';
+        return false;
+      } 
+      
+      if(!this.content || this.content === '' ) {
+        this.error = 'content';
+        return false;
       }
 
       this.title = null
